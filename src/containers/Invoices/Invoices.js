@@ -16,11 +16,12 @@ class Invoices extends Component {
     render() {
         const { invoicesList } = this.props;
         const invoicesToShow = Object.keys(invoicesList).map((keys, index) => (
-            <div key={`invoice__${index}`}>
-                {
-                    <div>{invoicesList[keys].id}</div>
-                }
-            </div>
+            <tr key={`invoice__${index}`}>
+                <td>{invoicesList[keys].id}</td>
+                <td>{invoicesList[keys].customer_id}</td>
+                <td>{invoicesList[keys].discount}</td>
+                <td>{invoicesList[keys].total}</td>
+            </tr>
         ));
         return (
             <div>
@@ -31,9 +32,19 @@ class Invoices extends Component {
                             ?
                             <div style={{'textAlign': 'center'}}>No items here. Create one!</div>
                             :
-                            <div>
-                                { invoicesToShow }
-                            </div>
+                            <table className="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Customer id</th>
+                                    <th>Discount</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  { invoicesToShow }
+                                </tbody>
+                            </table>
                         }
                 </div>
             </div>
