@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 
 import Invoices from './containers/Invoices/Invoices';
 import Products from './containers/Products/Products';
+import Customers from './containers/Customers/Customers';
 import Home from './containers/Home/Home';
 
 
@@ -18,6 +19,7 @@ render(
             <Route path="/" component={Home}>
                 <IndexRoute component={Invoices} />
                 <Route path="/products" component={Products}/>
+                <Route path="/customers" component={Customers}/>
             </Route>
         </Router>
     </Provider>,

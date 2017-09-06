@@ -1,32 +1,34 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-    productsList: [
+    customersList: [
     ],
-    productsFormFields: {
+    customersFormFields: {
         name: '',
-        price: ''
+        address: '',
+        phone: ''
     }
 };
-const productsList = (state = initialState.productsList, action) => {
+const customersList = (state = initialState.customersList, action) => {
     switch (action.type) {
-        case 'FETCH_PRODUCTS_SUCCESS':
+        case 'FETCH_CUSTOMERS_SUCCESS':
             return action.data;
-        case 'POST_PRODUCTS_SUCCESS':
-            let newProductsList = [...state];
-            newProductsList.push({
+        case 'POST_CUSTOMERS_SUCCESS':
+            let newCustomersList = [...state];
+            newCustomersList.push({
                 id: action.returnData.id,
                 name: action.returnData.name,
-                price: action.returnData.price,
+                address: action.returnData.address,
+                phone: action.returnData.phone,
                 createdAt: action.returnData.createdAt,
                 updatedAt: action.returnData.updatedAt
             });
-            return newProductsList;
+            return newCustomersList;
         default:
             return state;
     }
 };
-const productsFormFields = (state = initialState.productsFormFields, action) => {
+const customersFormFields = (state = initialState.customersFormFields, action) => {
     switch (action.type) {
         case 'EDIT_FIELD':
             return {
@@ -39,6 +41,6 @@ const productsFormFields = (state = initialState.productsFormFields, action) => 
 };
 
 export default combineReducers({
-    productsList,
-    productsFormFields
+    customersList,
+    customersFormFields
 })

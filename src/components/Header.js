@@ -17,8 +17,8 @@ class Header extends Component {
                 <div id="navbar" className="navbar-collapse collapse">
                     <ul className="nav navbar-nav">
                         <li><Link to="/products">Products</Link></li>
-                        <li><a href="#">Customers</a></li>
-                        <li><a href="#">Invoices</a></li>
+                        <li><Link to="/customers">Customers</Link></li>
+                        <li><Link to="/">Invoices</Link></li>
                     </ul>
                 </div>
             </div>
