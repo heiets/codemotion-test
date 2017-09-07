@@ -19,12 +19,25 @@ class Customers extends Component {
             customersFormFields,
             addCustomer
         } = this.props;
-        const dataToPost ={
-            name: customersFormFields.name,
-            address: customersFormFields.address,
-            phone: customersFormFields.phone
-        };
-        addCustomer(dataToPost);
+        console.log(customersFormFields.name !== 0);
+        console.log(customersFormFields.address !== 0);
+        console.log(customersFormFields.phone !== 0);
+        if (customersFormFields.name.length !== 0 && customersFormFields.address.length !== 0 && customersFormFields.phone.length !== 0) {
+            const dataToPost ={
+                name: customersFormFields.name,
+                address: customersFormFields.address,
+                phone: customersFormFields.phone
+            };
+            console.log(dataToPost);
+            addCustomer(dataToPost);
+        }
+    };
+    deleteCustomer = (id) => e => {
+        e.preventDefault();
+        const {
+            deleteCustomer
+        } = this.props;
+        deleteCustomer(id);
     };
     edit = field => e => {
         const {
@@ -43,6 +56,7 @@ class Customers extends Component {
                 <td>{customersList[keys].name}</td>
                 <td>{customersList[keys].address}</td>
                 <td>{customersList[keys].phone}</td>
+                <td><button className="btn btn-danger" onClick={this.deleteCustomer(customersList[keys].id)}>Delete</button></td>
             </tr>
         ));
         return (

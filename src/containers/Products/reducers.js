@@ -11,29 +11,40 @@ const initialState = {
 const productsList = (state = initialState.productsList, action) => {
     switch (action.type) {
         case 'FETCH_PRODUCTS_SUCCESS':
-            return action.data;
-        case 'POST_PRODUCTS_SUCCESS':
-            let newProductsList = [...state];
-            newProductsList.push({
-                id: action.returnData.id,
-                name: action.returnData.name,
-                price: action.returnData.price,
-                createdAt: action.returnData.createdAt,
-                updatedAt: action.returnData.updatedAt
-            });
-            return newProductsList;
+            const newProducts = Object.keys(action.data).reduce((prev, curr) => ({
+                ...prev,
+                [action.data[curr].id]: {
+                    ...action.data[curr]
+                }
+            }), {});
+            return newProducts;
+        case 'POST_PRODUCT_SUCCESS':
+            return {
+                ...state,
+                [action.returnData.id]: {
+                    id: action.returnData.id,
+                    name: action.returnData.name,
+                    price: action.returnData.price,
+                    createdAt: action.returnData.createdAt,
+                    updatedAt: action.returnData.updatedAt
+                 }
+            };
+        case 'DELETE_PRODUCT_SUCCESS':
+            let newProductsListDelete = {...state};
+            delete newProductsListDelete[action.returnData.id];
+            return newProductsListDelete;
         default:
             return state;
     }
 };
 const productsFormFields = (state = initialState.productsFormFields, action) => {
     switch (action.type) {
-        case 'EDIT_FIELD':
+        case 'EDIT_FIELD_PRODUCT':
             return {
                 ...state,
                 [action.field]: action.value
             };
-        case 'POST_PRODUCTS_SUCCESS':
+        case 'POST_PRODUCT_SUCCESS':
             return {
                 name: '',
                 price: ''

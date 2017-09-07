@@ -69,7 +69,7 @@ const invoiceCreateFormFields = (state = initialState.invoiceCreateFormFields, a
             };
         case 'POST_PRODUCTS_SUCCESS':
             return initialState.invoiceCreateFormFields;
-        case 'EDIT_FIELD':
+        case 'EDIT_FIELD_INVOICE':
             console.log(initialState);
             return {
                 ...state,

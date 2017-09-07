@@ -68,7 +68,7 @@ export const editQuantity = (id, value) => {
 };
 export const editField = (field, value) => {
     return {
-        type: 'EDIT_FIELD',
+        type: 'EDIT_FIELD_INVOICE',
         field,
         value
     }

@@ -17,7 +17,7 @@ export const fetchCustomers = () => {
 export const addCustomer = (jsonToPost) => {
     return dispatch => {
         dispatch({
-            type: 'POST_CUSTOMERS_REQUEST'
+            type: 'POST_CUSTOMER_REQUEST'
         });
         fetch('/api/customers', {
             headers: {
@@ -31,7 +31,29 @@ export const addCustomer = (jsonToPost) => {
             })
             .then(function(json) {
                 dispatch({
-                    type: 'POST_CUSTOMERS_SUCCESS',
+                    type: 'POST_CUSTOMER_SUCCESS',
+                    returnData: json
+                })
+            })
+    }
+};
+export const deleteCustomer = (id) => {
+    return dispatch => {
+        dispatch({
+            type: 'DELETE_CUSTOMER_REQUEST'
+        });
+        fetch(`/api/customers/${id}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'DELETE'
+        }).then(function(response) {
+            return response.json();
+        })
+            .then(function(json) {
+                dispatch({
+                    type: 'DELETE_CUSTOMER_SUCCESS',
                     returnData: json
                 })
             })
@@ -39,7 +61,7 @@ export const addCustomer = (jsonToPost) => {
 };
 export const editField = (field, value) => {
     return {
-        type: 'EDIT_FIELD',
+        type: 'EDIT_FIELD_CUSTOMERS',
         field,
         value
     }

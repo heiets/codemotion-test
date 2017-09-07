@@ -19,11 +19,20 @@ class Products extends Component {
             productsFormFields,
             addProduct
         } = this.props;
-        const dataToPost ={
-            "name": productsFormFields.name,
-            "price": +productsFormFields.price
-        };
-        addProduct(dataToPost);
+        if (productsFormFields.name.length !== 0 && productsFormFields.price !== 0) {
+            const dataToPost ={
+                name: productsFormFields.name,
+                price: +productsFormFields.price
+            };
+            addProduct(dataToPost);
+        }
+    };
+    deleteProduct = (id) => e => {
+        e.preventDefault();
+        const {
+            deleteProduct
+        } = this.props;
+        deleteProduct(id);
     };
     edit = field => e => {
         const {
@@ -41,6 +50,7 @@ class Products extends Component {
                 <td>{productsList[keys].id}</td>
                 <td>{productsList[keys].name}</td>
                 <td>{productsList[keys].price}</td>
+                <td><button className="btn btn-danger" onClick={this.deleteProduct(productsList[keys].id)}>Delete</button></td>
             </tr>
         ));
         return (

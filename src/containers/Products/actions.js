@@ -17,7 +17,7 @@ export const fetchProducts = () => {
 export const addProduct = (jsonToPost) => {
     return dispatch => {
         dispatch({
-            type: 'POST_PRODUCTS_REQUEST'
+            type: 'POST_PRODUCT_REQUEST'
         });
         fetch('/api/products', {
             headers: {
@@ -31,7 +31,29 @@ export const addProduct = (jsonToPost) => {
             })
             .then(function(json) {
                 dispatch({
-                    type: 'POST_PRODUCTS_SUCCESS',
+                    type: 'POST_PRODUCT_SUCCESS',
+                    returnData: json
+                })
+            })
+    }
+};
+export const deleteProduct = (id) => {
+    return dispatch => {
+        dispatch({
+            type: 'DELETE_PRODUCT_REQUEST'
+        });
+        fetch(`/api/products/${id}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'DELETE'
+        }).then(function(response) {
+            return response.json();
+        })
+            .then(function(json) {
+                dispatch({
+                    type: 'DELETE_PRODUCT_SUCCESS',
                     returnData: json
                 })
             })
@@ -39,7 +61,7 @@ export const addProduct = (jsonToPost) => {
 };
 export const editField = (field, value) => {
     return {
-        type: 'EDIT_FIELD',
+        type: 'EDIT_FIELD_PRODUCT',
         field,
         value
     }
