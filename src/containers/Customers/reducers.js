@@ -25,7 +25,8 @@ const customersList = (state = initialState.customersList, action) => {
                 [action.returnData.id]: {
                     id: action.returnData.id,
                     name: action.returnData.name,
-                    price: action.returnData.price,
+                    address: action.returnData.address,
+                    phone: action.returnData.phone,
                     createdAt: action.returnData.createdAt,
                     updatedAt: action.returnData.updatedAt
                 }

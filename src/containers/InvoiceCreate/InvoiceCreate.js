@@ -75,7 +75,6 @@ class InvoiceCreate extends Component {
             discount: invoiceCreateFormFields.discount,
             total: +this.refs.totalPrice.innerHTML
         };
-        console.log(dataToPost);
         addInvoice(dataToPost);
     };
     render() {
