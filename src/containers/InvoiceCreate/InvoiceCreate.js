@@ -39,7 +39,7 @@ class InvoiceCreate extends Component {
             editQuantity,
             invoiceCreateProductsList
         } = this.props;
-        let oldQuantity = invoiceCreateProductsList[id].quantity;
+        const oldQuantity = invoiceCreateProductsList[id].quantity;
         oldQuantity === 0
             ?
             editQuantity(id, 0)
@@ -51,7 +51,7 @@ class InvoiceCreate extends Component {
             editQuantity,
             invoiceCreateProductsList
         } = this.props;
-        let oldQuantity = invoiceCreateProductsList[id].quantity;
+        const oldQuantity = invoiceCreateProductsList[id].quantity;
         oldQuantity === 0
             ?
             editQuantity(id, 1)
