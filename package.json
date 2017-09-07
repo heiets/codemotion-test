@@ -1,7 +1,7 @@
 {
-  "name": "codemotion-test",
+  "name": "invoices-test",
   "version": "1.0.0",
-  "description": "codemotion-test",
+  "description": "invoices-test",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"
