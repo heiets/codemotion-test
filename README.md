@@ -1,10 +1,10 @@
-Setup guide
+Install guide
 
 - Install git
 - Install node js
 
-commands below:
+Commands:
 - git clone https://github.com/heiets/invoices-test.git
-go to app directory (-cd react-tabs)
+go to app directory (-cd invoices-test)
 - npm install
 - npm start
