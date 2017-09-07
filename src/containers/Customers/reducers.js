@@ -35,6 +35,12 @@ const customersFormFields = (state = initialState.customersFormFields, action) =
                 ...state,
                 [action.field]: action.value
             };
+        case 'POST_CUSTOMERS_SUCCESS':
+            return {
+                name: '',
+                address: '',
+                phone: ''
+            };
         default:
             return state;
     }

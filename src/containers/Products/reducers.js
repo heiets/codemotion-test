@@ -33,6 +33,11 @@ const productsFormFields = (state = initialState.productsFormFields, action) => 
                 ...state,
                 [action.field]: action.value
             };
+        case 'POST_PRODUCTS_SUCCESS':
+            return {
+                name: '',
+                price: ''
+            };
         default:
             return state;
     }

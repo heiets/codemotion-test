@@ -182,9 +182,7 @@ app.route('/api/products')
         })
     })
     .post(function(req, res) {
-        // let a = JSON.parse(req.body)
         var product = Product.build(_.pick(req.body, ['name', 'price']));
-        // var product = Product.build(_.pick(req.body, ['name', 'price']));
         product.save().then(function(product){
             res.json(product);
         });
