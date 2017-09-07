@@ -5,6 +5,6 @@ Install guide
 
 Commands:
 - git clone https://github.com/heiets/invoices-test.git
-go to app directory (-cd invoices-test)
+- go to app directory (-cd invoices-test)
 - npm install
 - npm start
